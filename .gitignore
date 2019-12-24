@@ -1,0 +1,6 @@
+/.idea/
+/build/
+/dist/
+/whitepaper.egg-info/
+_pycache_
+_pycache_/*
