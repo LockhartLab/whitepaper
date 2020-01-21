@@ -126,7 +126,7 @@ class Whitepaper:
 
         # If template_file is None, use from include
         if template_file is None:
-            template_file = 'template.html'
+            template_file = os.path.join(include_dir, 'html', 'template.html')
 
         # Read in template
         env = Environment(loader=FileSystemLoader(searchpath="./"), autoescape=False)
