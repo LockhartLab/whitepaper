@@ -1,2 +1,2 @@
-include whitepaper/_include/*
+include _include/*
 include version.yml
