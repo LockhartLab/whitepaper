@@ -142,9 +142,11 @@ class GoogleChart:
 
 
 class GoogleTable:
-    def __init__(self, data):
+    def __init__(self, data, row_numbers=True):
         self._data = data
         self._id = _generate_id()
+
+        self.row_numbers = row_numbers
 
     # Show the Google Table
     def show(self, render_loader=True):
@@ -166,7 +168,7 @@ class GoogleTable:
         """.format(id=self._id)
 
         # Specify data (reset index to get row names), initialize options
-        _data = self._data.reset_index()
+        _data = self._data.reset_index().fillna(0)
         output += """
             var data = google.visualization.arrayToDataTable({data});
             var options = {{
@@ -174,10 +176,10 @@ class GoogleTable:
 
         # Options
         output += """
-            showRowNumber: true,
+            showRowNumber: {row_numbers},
             width: "100%",
             height: "300px"            
-        """
+        """.format(row_numbers='true' if self.row_numbers else 'false')
 
         # Close out script
         output += """
