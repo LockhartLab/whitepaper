@@ -175,6 +175,8 @@ class Section:
         # Render section title
         # output = self._render_title(backend)
         output = ''
+        if backend == 'html':
+            output = '{}'.format(self.title)
 
         # Create path if it doesn't exist
         path = os.path.join(path, self.title)
