@@ -119,6 +119,7 @@ class Whitepaper:
             buffer.close()
 
     # Render html using jinja
+    # TODO html file named after Whitepages title
     def render_html(self, template_file=None, header=True, footer=True):
         """
         Render html
