@@ -124,12 +124,13 @@ class Whitepaper:
         Render html
         """
 
-        # If template_file is None, use from include
+        # If template_file is None, use from include; split into path and file
         if template_file is None:
             template_file = os.path.join(include_dir, 'html', 'template.html')
+        template_path, template_file = os.path.split(template_file)
 
         # Read in template
-        env = Environment(loader=FileSystemLoader(searchpath="./"), autoescape=False)
+        env = Environment(loader=FileSystemLoader(searchpath=template_path), autoescape=False)
         template = env.get_template(template_file)
 
         # Create _include path
