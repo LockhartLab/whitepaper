@@ -1,5 +1,5 @@
 """
-GoogleChart.py
+google.py
 written in Python3
 author: C. Lockhart <chris@lockhartlab.org>
 
@@ -46,12 +46,7 @@ class GoogleChart:
         self.kind = kind
 
         # Generate _id randomly
-        while True:
-            _id = ''.join(np.random.choice(list(string.ascii_lowercase), 10))
-            if _id not in this.cache:
-                break
-        this.cache.append(_id)
-        self._id = _id
+        self._id = _generate_id()
 
         # Data for plotting
         self._data = pd.DataFrame({'x': []})
@@ -127,7 +122,7 @@ class GoogleChart:
         output += """
             }};
             var chart = new google.visualization.LineChart(document.getElementById("{id}"));
-                chart.draw(data, options);
+            chart.draw(data, options);
             }}
             </script>
             <div id="{id}" style="width: 100%; height: 300px;"></div>
@@ -144,3 +139,63 @@ class GoogleChart:
     def ylabel(self, label):
         self._y_title = label
 
+
+class GoogleTable:
+    def __init__(self, data):
+        self._data = data
+        self._id = _generate_id()
+
+    # Show the Google Table
+    def show(self, render_loader=True):
+        # Render loader if necessary
+        output = '' if not render_loader else """
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        """
+
+        # Open script section
+        output += """
+            <script type="text/javascript">
+        """
+
+        # Script preamble
+        output += """
+            google.charts.load("current", {{packages: ["table"]}});
+            google.charts.setOnLoadCallback(drawTable_{id});
+            function drawTable_{id}() {{
+        """.format(id=self._id)
+
+        # Specify data, initialize options
+        output += """
+            var data = google.visualization.arrayToDataTable({data});
+            var options = {{
+        """.format(data=repr(np.vstack([self._data.columns, self._data.values]).tolist()))
+
+        # Options
+        output += """
+            showRowNumber: true,
+            width: "100%",
+            height: "300px"            
+        """
+
+        # Close out script
+        output += """
+            }};
+            var table = new google.visualization.Table(document.getElementById("{id}"));
+            table.draw(data, options);
+            }}
+            </script>
+            <div id="{id}"></div>
+        """.format(id=self._id)
+
+        # Return
+        return output
+
+
+# Helper function to generate a unique ID
+def _generate_id(n=10):
+    while True:
+        _id = ''.join(np.random.choice(list(string.ascii_lowercase), n))
+        if _id not in this.cache:
+            break
+    this.cache.append(_id)
+    return _id

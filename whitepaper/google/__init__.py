@@ -1,7 +1,8 @@
 
-from .GoogleChart import *
+from .google import *
 
 __all__ = [
-    'GoogleChart'
+    'GoogleChart',
+    'GoogleTable'
 ]
 
