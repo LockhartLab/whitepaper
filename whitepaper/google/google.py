@@ -26,6 +26,7 @@ this.cache = []
 
 
 # TODO: split this off into its own package
+# TODO should this be called GVizChart?
 class GoogleChart:
     """
     Generate the HTML for charts with Google Visualization API
@@ -164,11 +165,12 @@ class GoogleTable:
             function drawTable_{id}() {{
         """.format(id=self._id)
 
-        # Specify data, initialize options
+        # Specify data (reset index to get row names), initialize options
+        _data = self._data.reset_index()
         output += """
             var data = google.visualization.arrayToDataTable({data});
             var options = {{
-        """.format(data=repr(np.vstack([self._data.columns, self._data.values]).tolist()))
+        """.format(data=repr(np.vstack([_data.columns, _data.values]).tolist()))
 
         # Options
         output += """
