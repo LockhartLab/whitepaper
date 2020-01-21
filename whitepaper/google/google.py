@@ -135,7 +135,7 @@ class GoogleChart:
         return output
 
     # Set x title
-    def xtitle(self, label):
+    def xtitle(self, title):
         self._x_title = title
 
     # Set y title
