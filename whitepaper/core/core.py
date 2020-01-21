@@ -183,7 +183,7 @@ class Section:
         # output = self._render_title(backend)
         output = ''
         if backend == 'html' and self._depth > 1:
-            output = '<b>{}</b>'.format(self.title)
+            output = '<br><b>{}</b><br>'.format(self.title)
 
         # Create path if it doesn't exist
         path = os.path.join(path, self.title)
