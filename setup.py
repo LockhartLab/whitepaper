@@ -31,6 +31,8 @@ setup(
     url="https://www.lockhartlab.org",
     packages=[
         'whitepaper',
+        'whitepaper._include',
+        'whitepaper._include.html',
         'whitepaper.core',
         'whitepaper.google'
     ],
