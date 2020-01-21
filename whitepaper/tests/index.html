@@ -1,0 +1,133 @@
+
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="../../include/html/template.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../include/html/template.js"></script>
+  </head>
+
+  <body>
+    
+      <div class="header">
+        <div class="header-half">
+          <div class="site-title">
+            Test
+          </div>
+        </div>
+        <div class="header-half">
+          <div class="sidenav">
+            
+              <div class="sidenav-link">
+                <a href="#Abstract">Abstract</a>
+              </div>
+            
+              <div class="sidenav-link">
+                <a href="#Introduction">Introduction</a>
+              </div>
+            
+              <div class="sidenav-link">
+                <a href="#"></a>
+              </div>
+            
+          </div>
+          <div class="hamburger-holder">
+            <div class="hamburger">
+              <div class="hamburger-bar hamburger-bar1"></div>
+              <div class="hamburger-bar hamburger-bar2"></div>
+              <div class="hamburger-bar hamburger-bar3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-space">
+      </div>
+    
+
+    <div class="main">
+      
+        <span class="anchor" id="Abstract"></span>
+        <div class="section">
+          <div class="section-header">
+            <div class="section-title">
+              Abstract
+            </div>
+            <div class="section-controller">
+              <a href="javascript:;" class="section-controller-previous">Previous</a> | <a href="javascript:;" class="section-controller-next">Next</a>
+            </div>
+          </div>
+          <div class="section-content">
+            <p>This is me adding abstract text!</p><center><img src=.\_include\Abstract\equation_0.svg /></center>
+          </div>
+        </div>
+      
+        <span class="anchor" id="Introduction"></span>
+        <div class="section">
+          <div class="section-header">
+            <div class="section-title">
+              Introduction
+            </div>
+            <div class="section-controller">
+              <a href="javascript:;" class="section-controller-previous">Previous</a> | <a href="javascript:;" class="section-controller-next">Next</a>
+            </div>
+          </div>
+          <div class="section-content">
+            <p>This is me adding introduction text!</p><center><img src=.\_include\Introduction\equation_0.svg /></center>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+            <script type="text/javascript">
+        
+            google.charts.load("current", {packages: ["corechart", "line"]});
+            google.charts.setOnLoadCallback(drawChart_vzwjyvatsg);
+            function drawChart_vzwjyvatsg() {
+        
+            var data = google.visualization.arrayToDataTable([['x', 'y0'], [0.0, 0.06119770563942517], [1.0, 0.6189197240457461], [2.0, 0.48814304107756434], [3.0, 0.14163452091727646], [4.0, 0.08835187952291912], [5.0, 0.7027073495607943], [6.0, 0.09247519830312834], [7.0, 0.2795801794293269], [8.0, 0.6546674742116193], [9.0, 0.9663327764214643]]);
+            var options = {
+        
+            vAxis: {title: "x"},
+        
+            hAxis: {title: "y"},
+        
+            legend: {position: "none"},
+        
+            };
+            var chart = new google.visualization.LineChart(document.getElementById("vzwjyvatsg"));
+                chart.draw(data, options);
+            }
+            </script>
+            <div id="vzwjyvatsg" style="width: 100%; height: 300px;"></div>
+        
+          </div>
+        </div>
+      
+        <span class="anchor" id=""></span>
+        <div class="section">
+          <div class="section-header">
+            <div class="section-title">
+              
+            </div>
+            <div class="section-controller">
+              <a href="javascript:;" class="section-controller-previous">Previous</a> | <a href="javascript:;" class="section-controller-next">Next</a>
+            </div>
+          </div>
+          <div class="section-content">
+            <p>can I add text as its own section?</p>
+          </div>
+        </div>
+      
+    </div>
+
+    
+      <div class="footer">
+        compiled by <a href="https://github.com/LockhartLab/whitepaper">whitepaper</a>
+      </div>
+    
+
+    <div class="dummy"></div>
+  </body>
+
+</html>

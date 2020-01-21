@@ -31,8 +31,16 @@ setup(
     url="https://www.lockhartlab.org",
     packages=[
         'whitepaper',
+        'whitepaper.core',
+        'whitepaper.google'
     ],
-    install_requires=[],
+    install_requires=[
+        'jinja2',
+        'markdown',
+        'numpy',
+        'pandas',
+        'sympy'
+    ],
     include_package_data=True,
     zip_safe=True
 )

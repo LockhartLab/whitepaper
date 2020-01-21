@@ -4,3 +4,5 @@
 /whitepaper.egg-info/
 _pycache_
 _pycache_/*
+_scripts
+_scripts/*
