@@ -120,13 +120,14 @@ class GoogleChart:
         """.format(legend=self._legend if self._legend is not None else 'none')
 
         # Close out script
+        # TODO add ability to adjust width, height
         output += """
             }};
             var chart = new google.visualization.LineChart(document.getElementById("{id}"));
             chart.draw(data, options);
             }}
             </script>
-            <div id="{id}" style="width: 100%; height: 300px;"></div>
+            <div id="{id}" style="width: 100%;"></div>
         """.format(id=self._id)
 
         # Return
@@ -175,10 +176,10 @@ class GoogleTable:
         """.format(data=repr(np.vstack([_data.columns, _data.values]).tolist()))
 
         # Options
+        # TODO add ability to adjust width, height
         output += """
             showRowNumber: {row_numbers},
             width: "100%",
-            height: "300px"            
         """.format(row_numbers='true' if self.row_numbers else 'false')
 
         # Close out script
