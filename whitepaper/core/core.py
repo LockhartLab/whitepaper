@@ -10,7 +10,7 @@ import os
 from sympy import preview as sympy_preview
 
 # Include dir
-include_dir = os.path.abspath(__file__ + '/../_include')
+include_dir = os.path.abspath(__file__ + '/../../_include')
 
 
 # Class for building a Whitepaper
