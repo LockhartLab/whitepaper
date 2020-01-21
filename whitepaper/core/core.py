@@ -157,14 +157,14 @@ class Section:
 
     """
 
-    def __init__(self, title, whitepaper=None):
+    def __init__(self, title, parent=None):
 
         # Title of the section
         self.title = title
 
-        # If whitepaper is not None, we can add this Section
-        if whitepaper is not None:
-            whitepaper.add_section(self)
+        # If parent is not None, we can add this Section
+        if parent is not None:
+            parent.add_section(self)
 
         # A place to store all the sections we add
         self._sections = []
@@ -217,6 +217,9 @@ class Section:
 
     def add_graphic(self):
         pass
+
+    def add_section(self, section):
+        self._sections.append(section)
 
     def add_table(self):
         pass
