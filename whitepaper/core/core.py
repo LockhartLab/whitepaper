@@ -44,6 +44,9 @@ class Whitepaper:
         self.toc_depth = toc_depth
         self.path = path
 
+        # Whitepaper _depth is always 0
+        self._depth = 0
+
         # Internally use to store
         self._sections = []
         self._section_id = -1
@@ -162,9 +165,13 @@ class Section:
         # Title of the section
         self.title = title
 
-        # If parent is not None, we can add this Section
+        # If parent is not None, we can add this Section to it
         if parent is not None:
             parent.add_section(self)
+
+        # By default, set the _depth to 1; otherwise add 1 from parent
+        # noinspection PyProtectedMember
+        self._depth = 1 if parent is None else parent._depth + 1
 
         # A place to store all the sections we add
         self._sections = []
@@ -175,8 +182,8 @@ class Section:
         # Render section title
         # output = self._render_title(backend)
         output = ''
-        if backend == 'html':
-            output = '{}'.format(self.title)
+        if backend == 'html' and self._depth > 1:
+            output = '<b>{}</b>'.format(self.title)
 
         # Create path if it doesn't exist
         path = os.path.join(path, self.title)
