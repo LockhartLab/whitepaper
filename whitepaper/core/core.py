@@ -120,15 +120,15 @@ class Whitepaper:
 
     # Render html using jinja
     # TODO html file named after Whitepages title
-    def render_html(self, template_file=None, header=True, footer=True):
+    def render_html(self, template=None, header=True, footer=True):
         """
         Render html
         """
 
         # If template_file is None, use from include; split into path and file
-        if template_file is None:
-            template_file = os.path.join(include_dir, 'html', 'template.html')
-        template_path, template_file = os.path.split(template_file)
+        if template is None:
+            template = os.path.join(include_dir, 'html', 'template.html')
+        template_path, template_file = os.path.split(template)
 
         # Read in template
         env = Environment(loader=FileSystemLoader(searchpath=template_path), autoescape=False)
