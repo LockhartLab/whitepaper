@@ -13,23 +13,39 @@
   <body>
     <center>
       <h1>Google Drive Launcher</h1>
-      <a href="https://developers.google.com/drive/api/v3/quickstart/js">Getting Started</a>
+      <a href="https://developers.google.com/drive/api/v3/quickstart/js">Don't Know Where to Start? Get Started!</a><br><br>
+      <form>
+        <table>
+          <tr>
+            <td align="right">Client ID:</td>
+            <td><input id="client_id"></td>
+          </tr>
+          <tr>
+            <td align="right">API Key:</td>
+            <td><input id="api_key"></td>
+          </tr>
+          <tr>
+            <td align="right">File ID:</td>
+            <td><input id="file_id"></td>
+          </tr>
+        </table>
+        <input type="button" value="Launch" onclick="handleClientLoad();">
+      </form>
 
       <!--Add buttons to initiate auth sequence and sign out-->
       <button id="authorize_button" style="display: none;">Authorize</button>
       <button id="signout_button" style="display: none;">Sign Out</button>
-
-      <pre id="content" style="white-space: pre-wrap;"></pre>
     </center>
+    <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
       // Get parameters from URL
       var urlParams = new URLSearchParams(window.location.search);
 
-      // Client ID and API key from the Developer Console, File ID for HTML file to load
-      var CLIENT_ID = urlParams.get('client_id');
-      var API_KEY = urlParams.get('api_key');
-      var FILE_ID = urlParams.get('file_id');
+      // Fill form
+      document.getElementById('client_id').value = urlParams.get('client_id');;
+      document.getElementById('api_key').value = urlParams.get('api_key');;
+      document.getElementById('file_id').value = urlParams.get('file_id');;
 
       // Array of API discovery doc URLs for APIs used by the quickstart
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
@@ -54,8 +70,8 @@
        */
       function initClient() {
         gapi.client.init({
-          apiKey: API_KEY,
-          clientId: CLIENT_ID,
+          apiKey: document.getElementById('api_key').value,
+          clientId: document.getElementById('client_id').value,
           discoveryDocs: DISCOVERY_DOCS,
           scope: SCOPES
         }).then(function () {
@@ -115,7 +131,7 @@
       /* Get file from Drive */
       function getFile() {
         var request = gapi.client.drive.files.get({
-          'fileId': FILE_ID,
+          'fileId': document.getElementById('file_id').value,
           'alt': 'media'
         });
         request.then(function(response) {
