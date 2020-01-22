@@ -37,6 +37,7 @@
         left: 0;
         border-bottom: 1px solid #333;
         display: table;
+        z-index: 1;
       }
 
       .header .header-half {
@@ -258,7 +259,7 @@
           // deal with next from section controller
           if (target.is(".section-controller-next")) {
             var nextSectionIndex = $(".section-controller-next").index(target) + 1;
-            if (nextSectionIndex < $(".anchor").length - 1) {
+            if (nextSectionIndex < $(".anchor").length) {
               var nextSection = $(".anchor").eq(nextSectionIndex);
               window.location.href = '#' + nextSection.attr('id');
             };
@@ -352,12 +353,10 @@
         </div>
       {% endfor %}
     </div>
-
-    {% if footer %}
-      <div class="footer">
-        compiled by <a href="https://github.com/LockhartLab/whitepaper">whitepaper</a>
-      </div>
-    {% endif %}
+    
+    <div class="footer">
+      {{ footer }}
+    </div>
 
     <div class="dummy"></div>
   </body>

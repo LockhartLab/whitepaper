@@ -4,6 +4,7 @@ written in Python3
 author: C. Lockhart <chris@lockhartlab.org>
 """
 
+from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 from markdown import markdown
 import os
@@ -123,7 +124,7 @@ class Whitepaper:
 
     # Render html using jinja
     # TODO html file named after Whitepages title
-    def render_html(self, template=None, header=True, footer=True):
+    def render_html(self, template=None, header=True, footer=None):
         """
         Render html
         """
@@ -146,6 +147,12 @@ class Whitepaper:
         sections = [(section.title, section._render('html', path)) for section in self._sections]
 
         # Render the html from the template
+        if footer is None:
+            footer = """
+                generated at {now}
+                <br>
+                compiled by <a href="https://github.com/LockhartLab/whitepaper">whitepaper</a>
+            """.format(now=datetime.now())
         html = template.render(title=title, sections=sections, header=header, footer=footer)
 
         # Write out the html
@@ -155,6 +162,7 @@ class Whitepaper:
 
 
 # Section of the Whitepaper report
+# TODO could offer section to download files?
 class Section:
     """
 
@@ -178,6 +186,7 @@ class Section:
         self._equation_id = -1
 
     # Render section
+    # TODO change title to it's own div, named with _depth
     def _render(self, backend, path):
         # Render section title
         # output = self._render_title(backend)
