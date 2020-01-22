@@ -149,7 +149,7 @@ class Whitepaper:
         # Render the html from the template
         if footer is None:
             footer = """
-                generated at {now}
+                generated on {now}
                 <br>
                 compiled by <a href="https://github.com/LockhartLab/whitepaper">whitepaper</a>
             """.format(now=datetime.now())

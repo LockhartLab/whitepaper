@@ -29,6 +29,7 @@ this.cache = []
 # TODO should this be called GVizChart?
 # TODO add method to create from dataframe
 # TODO handle when x is a date (needs to be new Date(...))
+# TODO https://stackoverflow.com/questions/8950761/google-chart-redraw-scale-on-window-resize
 class GoogleChart:
     """
     Generate the HTML for charts with Google Visualization API
